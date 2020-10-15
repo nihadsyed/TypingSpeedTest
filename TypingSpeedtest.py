@@ -33,7 +33,7 @@ class Game:
         self.screen = pygame.display.set_mode((self.w,self.h))
         pygame.display.set_caption('Typing Speed Test')
 
-    
+
     def draw_text(self, screen, msg, y ,fsize, color):
         font = pygame.font.Font(None, fsize)
         text = font.render(msg, 1,color)
@@ -63,7 +63,7 @@ class Game:
         if(not self.end):
             #Calculate time
             self.total_time = time.time() - self.time_start
-               
+            
             #Calculate accuracy
             count = 0
             for i,c in enumerate(self.word):
@@ -78,7 +78,7 @@ class Game:
             self.wpm = len(self.input_text)*60/(5*self.total_time)
             self.end = True
             print(self.total_time)
-                
+            
             self.results = 'Time:'+str(round(self.total_time)) +" secs   Accuracy:"+ str(round(self.accuracy)) + "%" + '   Wpm: ' + str(round(self.wpm))
 
             # draw icon image
@@ -94,7 +94,6 @@ class Game:
     def run(self):
         self.reset_game()
     
-       
         self.running=True
         while(self.running):
             clock = pygame.time.Clock()
@@ -139,7 +138,6 @@ class Game:
             
             pygame.display.update()
              
-                
         clock.tick(60)
 
     def reset_game(self):
