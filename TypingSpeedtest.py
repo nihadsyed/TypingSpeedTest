@@ -47,14 +47,16 @@ class Game:
         pastTenseVerb = random.choice(pastTenseVerbs)
         colors = open('colors.txt').read()
         colors = colors.split('\n')
-        color = random.choice(colors)
+        color1 = random.choice(colors)
+        color2 = random.choice(colors)
         animals = open('animals.txt').read()
         animals = animals.split('\n')
-        animal = random.choice(animals)
+        animal1 = random.choice(animals)
+        animal2 = random.choice(animals)
         adjectives = open('adjectives.txt').read()
         adjectives = adjectives.split('\n')
         adjective = random.choice(adjectives)
-        sentence = str("The " + adjective + " " + color + " " + animal + " " + pastTenseVerb + " the " + color + " " + animal + '.')
+        sentence = str("The " + adjective + " " + color1 + " " + animal1 + " " + pastTenseVerb + " the " + color2 + " " + animal2 + '.')
         return sentence
 
     def show_results(self, screen):
