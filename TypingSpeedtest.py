@@ -174,5 +174,5 @@ class Game:
         pygame.display.update()
 
 
-#test
+
 Game().run()
