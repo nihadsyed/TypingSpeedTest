@@ -54,7 +54,7 @@ class Game:
         adjectives = open('adjectives.txt').read()
         adjectives = adjectives.split('\n')
         adjective = random.choice(adjectives)
-        sentence = str("The " + adjective + " " + color + " " + animal + " " + pastTenseVerb + "the " + color + " " + animal + '.')
+        sentence = str("The " + adjective + " " + color + " " + animal + " " + pastTenseVerb + " the " + color + " " + animal + '.')
         return sentence
 
     def show_results(self, screen):
