@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 import time
 import random
-#bro
+
 class Game:
 
     def __init__(self):
