@@ -24,7 +24,7 @@ class Game:
         self.RESULT_C = (255,70,70)
 
         pygame.init()
-        self.open_img = pygame.image.load('TypingSpeedtestProgramBackground.jpg')
+        self.open_img = pygame.image.load('type_speed_open.png')
         self.open_img = pygame.transform.scale(self.open_img, (self.w,self.h))
         
         self.bg = pygame.image.load('TypingSpeedtestProgramBackground.jpg')
