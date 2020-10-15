@@ -42,9 +42,19 @@ class Game:
         pygame.display.update()   
         
     def get_sentence(self):
-        f = open('sentences.txt').read()
-        sentences = f.split('\n')
-        sentence = random.choice(sentences)
+        pastTenseVerbs = open('pastTenseVerbs.txt').read()
+        pastTenseVerbs = pastTenseVerbs.split('\n')
+        pastTenseVerb = random.choice(pastTenseVerbs)
+        colors = open('colors.txt').read()
+        colors = colors.split('\n')
+        color = random.choice(colors)
+        animals = open('animals.txt').read()
+        animals = animals.split('\n')
+        animal = random.choice(animals)
+        adjectives = open('adjectives.txt').read()
+        adjectives = adjectives.split('\n')
+        adjective = random.choice(adjectives)
+        sentence = str("The " + adjective + " " + color + " " + animal + " " + pastTenseVerb + "the " + color + " " + animal + '.')
         return sentence
 
     def show_results(self, screen):

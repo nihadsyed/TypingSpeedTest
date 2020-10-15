@@ -1,0 +1,7 @@
+large
+small
+fast
+quick
+slow
+quiet
+angry

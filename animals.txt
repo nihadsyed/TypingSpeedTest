@@ -1,0 +1,11 @@
+pig
+cow
+chicken
+horse
+dog
+cat
+monkey
+spider
+sheep
+wolf
+bear
