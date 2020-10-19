@@ -3,6 +3,7 @@ from pygame.locals import *
 import sys
 import time
 import random
+#from termcolor import colored              testing bold feature
 
 class Game:
 
@@ -125,6 +126,7 @@ class Game:
                             print(self.input_text)
                             self.show_results(self.screen)
                             print(self.results)
+                            #print(colored('Time: ', attrs=['bold']))       testing bold feature
                             self.draw_text(self.screen, self.results,350, 28, self.RESULT_C)  
                             self.end = True
                             
