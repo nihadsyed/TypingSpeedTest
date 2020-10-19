@@ -3,6 +3,7 @@ from pygame.locals import *
 import sys
 import time
 import random
+import sqlite3
 #from termcolor import colored              testing bold feature
 
 class Game:
@@ -88,7 +89,20 @@ class Game:
             #screen.blit(self.time_img, (80,320))
             screen.blit(self.time_img, (self.w/2-75,self.h-128))
             self.draw_text(screen,"Reset", self.h - 12, 26, (255,255,255))
-            
+            connection = sqlite3.connect("data.db")
+            cursor = connection.cursor()
+            sql_command = """
+            CREATE TABLE IF NOT EXISTS playerData (
+            attemptNumber INTEGER PRIMARY KEY,
+            totalTime INTEGER NOT NULL,
+            accuracy INTEGER NOT NULL,
+            wpm INTEGER NOT NULL);"""
+            cursor.execute(sql_command)
+            cursor.execute("INSERT INTO playerData (totalTime,accuracy,wpm) VALUES(?,?,?)",(self.total_time,self.accuracy,self.wpm))
+            cursor.execute(sql_command)
+            connection.commit()
+            cursor.close()
+            connection.close()
             print(self.results)
             pygame.display.update()
 
