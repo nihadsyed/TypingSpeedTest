@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 import time
 import random
-import sqlite3
+#from termcolor import colored              testing bold feature
 
 class Game:
 
@@ -17,19 +17,19 @@ class Game:
         self.time_start = 0
         self.total_time = 0
         self.accuracy = '0%'
-        self.results = 'Time:0 Accuracy:0 % Wpm:0 '
+        self.results = 'Time: 0 Accuracy: 0 % WPM: 0 '
         self.wpm = 0
         self.end = False
         self.HEAD_C = (255,213,102)
         self.TEXT_C = (240,240,240)
-        self.RESULT_C = (255,70,70)
+        self.RESULT_C = (201,32,35)
 
         pygame.init()
         self.open_img = pygame.image.load('type_speed_open.png')
         self.open_img = pygame.transform.scale(self.open_img, (self.w,self.h))
         
         self.bg = pygame.image.load('TypingSpeedtestProgramBackground.jpg')
-        self.bg = pygame.transform.scale(self.bg, (500,750))
+        self.bg = pygame.transform.scale(self.bg, (self.w,self.h))
        
         self.screen = pygame.display.set_mode((self.w,self.h))
         pygame.display.set_caption('Typing Speed Test')
@@ -39,7 +39,8 @@ class Game:
         text = font.render(msg, 1,color)
         text_rect = text.get_rect(center=(self.w/2, y))
         screen.blit(text, text_rect)
-        pygame.display.update()   
+        pygame.display.update()
+
         
     def get_sentence(self):
         pastTenseVerbs = open('pastTenseVerbs.txt').read()
@@ -79,29 +80,15 @@ class Game:
             self.end = True
             print(self.total_time)
             
-            self.results = 'Time:'+str(round(self.total_time)) +" secs   Accuracy:"+ str(round(self.accuracy)) + "%" + '   Wpm: ' + str(round(self.wpm))
+            self.results = 'Time: ' + str(round(self.total_time)) + " secs   Accuracy: " + str(round(self.accuracy)) + "%" + '   WPM: ' + str(round(self.wpm))
 
             # draw icon image
             self.time_img = pygame.image.load('icon.png')
-            self.time_img = pygame.transform.scale(self.time_img, (150,150))
+            self.time_img = pygame.transform.scale(self.time_img, (150,100))
             #screen.blit(self.time_img, (80,320))
-            screen.blit(self.time_img, (self.w/2-75,self.h-140))
-            self.draw_text(screen,"Reset", self.h - 70, 26, (100,100,100))
-            connection = sqlite3.connect("data.db")
-            cursor = connection.cursor()
-            sql_command = """
-            CREATE TABLE IF NOT EXISTS playerData (
-            attemptNumber INTEGER PRIMARY KEY,
-            totalTime INTEGER NOT NULL,
-            accuracy INTEGER NOT NULL,
-            wpm INTEGER NOT NULL);"""
-            cursor.execute(sql_command)
-            cursor.execute("INSERT INTO playerData (totalTime,accuracy,wpm) VALUES(?,?,?)",(self.total_time,self.accuracy,self.wpm))
-            cursor.execute(sql_command)
-            connection.commit()
-            cursor.close()
-            connection.close()
-
+            screen.blit(self.time_img, (self.w/2-75,self.h-128))
+            self.draw_text(screen,"Reset", self.h - 12, 26, (255,255,255))
+            
             print(self.results)
             pygame.display.update()
 
@@ -139,6 +126,7 @@ class Game:
                             print(self.input_text)
                             self.show_results(self.screen)
                             print(self.results)
+                            #print(colored('Time: ', attrs=['bold']))       testing bold feature
                             self.draw_text(self.screen, self.results,350, 28, self.RESULT_C)  
                             self.end = True
                             
@@ -175,7 +163,7 @@ class Game:
         #drawing heading
         self.screen.fill((0,0,0))
         self.screen.blit(self.bg,(0,0))
-        msg = "Typing Speed Test"
+        msg = "TYPING SPEED TEST"
         self.draw_text(self.screen, msg,80, 80,self.HEAD_C)  
         # draw the rectangle for input box
         pygame.draw.rect(self.screen,(255,192,25), (50,250,650,50), 2)
