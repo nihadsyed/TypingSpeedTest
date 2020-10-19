@@ -28,7 +28,7 @@ class Game:
         self.open_img = pygame.transform.scale(self.open_img, (self.w,self.h))
         
         self.bg = pygame.image.load('TypingSpeedtestProgramBackground.jpg')
-        self.bg = pygame.transform.scale(self.bg, (500,750))
+        self.bg = pygame.transform.scale(self.bg, (self.w,self.h))
        
         self.screen = pygame.display.set_mode((self.w,self.h))
         pygame.display.set_caption('Typing Speed Test')
@@ -83,10 +83,10 @@ class Game:
 
             # draw icon image
             self.time_img = pygame.image.load('icon.png')
-            self.time_img = pygame.transform.scale(self.time_img, (150,150))
+            self.time_img = pygame.transform.scale(self.time_img, (150,100))
             #screen.blit(self.time_img, (80,320))
-            screen.blit(self.time_img, (self.w/2-75,self.h-140))
-            self.draw_text(screen,"Reset", self.h - 70, 26, (100,100,100))
+            screen.blit(self.time_img, (self.w/2-75,self.h-128))
+            self.draw_text(screen,"Reset", self.h - 12, 26, (255,255,255))
             
             print(self.results)
             pygame.display.update()
