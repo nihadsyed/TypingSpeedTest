@@ -33,7 +33,6 @@ class Game:
         self.screen = pygame.display.set_mode((self.w,self.h))
         pygame.display.set_caption('Typing Speed Test')
 
-
     def draw_text(self, screen, msg, y ,fsize, color):
         font = pygame.font.Font(None, fsize)
         text = font.render(msg, 1,color)
