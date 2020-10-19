@@ -16,12 +16,12 @@ class Game:
         self.time_start = 0
         self.total_time = 0
         self.accuracy = '0%'
-        self.results = 'Time:0 Accuracy:0 % Wpm:0 '
+        self.results = 'Time: 0 Accuracy: 0 % WPM: 0 '
         self.wpm = 0
         self.end = False
         self.HEAD_C = (255,213,102)
         self.TEXT_C = (240,240,240)
-        self.RESULT_C = (255,70,70)
+        self.RESULT_C = (201,32,35)
 
         pygame.init()
         self.open_img = pygame.image.load('type_speed_open.png')
@@ -38,7 +38,8 @@ class Game:
         text = font.render(msg, 1,color)
         text_rect = text.get_rect(center=(self.w/2, y))
         screen.blit(text, text_rect)
-        pygame.display.update()   
+        pygame.display.update()
+
         
     def get_sentence(self):
         pastTenseVerbs = open('pastTenseVerbs.txt').read()
@@ -78,7 +79,7 @@ class Game:
             self.end = True
             print(self.total_time)
             
-            self.results = 'Time:'+str(round(self.total_time)) +" secs   Accuracy:"+ str(round(self.accuracy)) + "%" + '   Wpm: ' + str(round(self.wpm))
+            self.results = 'Time: ' + str(round(self.total_time)) + " secs   Accuracy: " + str(round(self.accuracy)) + "%" + '   WPM: ' + str(round(self.wpm))
 
             # draw icon image
             self.time_img = pygame.image.load('icon.png')
@@ -160,7 +161,7 @@ class Game:
         #drawing heading
         self.screen.fill((0,0,0))
         self.screen.blit(self.bg,(0,0))
-        msg = "Typing Speed Test"
+        msg = "TYPING SPEED TEST"
         self.draw_text(self.screen, msg,80, 80,self.HEAD_C)  
         # draw the rectangle for input box
         pygame.draw.rect(self.screen,(255,192,25), (50,250,650,50), 2)
